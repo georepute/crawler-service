@@ -47,6 +47,7 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
+COPY tsconfig.json ./
 
 # Install dependencies
 RUN npm install
@@ -58,9 +59,12 @@ RUN npx playwright install-deps chromium
 # Copy application files
 COPY . .
 
+# Build TypeScript
+RUN npm run build
+
 # Expose port
 EXPOSE 3001
 
 # Start server
-CMD ["node", "server.js"]
+CMD ["node", "dist/server.js"]
 

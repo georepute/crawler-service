@@ -1,6 +1,9 @@
 node_modules/
-.env
 .env.locals1
 *.log
 .DS_Store
+dist/
+*.js
+!server.js
 
+config.bat
